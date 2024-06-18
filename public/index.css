@@ -1,0 +1,77 @@
+*{
+    padding:0;
+    margin: 0;
+}
+body{
+    background-color: #00000017;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content:space-around;
+    background-color:#3a51b754;
+    color: white;
+    min-height:70px;
+    align-items: center;
+    
+}
+footer{
+    display: flex;
+    position : fixed;
+    bottom : 0;
+    width: 100%;
+    justify-content:space-around;
+    background-color:#3a51b754;
+    color: white;
+    min-height: 70px;
+    align-items: center;
+}
+
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 181px;
+    align-items: center;
+}
+.star{
+    font-size: 5vh;
+    cursor: pointer;
+}
+.one{
+   color: rgb(255, 106, 0)
+}
+.two{
+   color: rgb(255, 106, 0)
+}
+.three{
+   color: rgb(255, 106, 0)
+}
+.four{
+    color: rgb(255, 106, 0)
+}
+.five{
+   color: rgb(255, 106, 0)
+}
+#output{
+    font-weight: bolder;
+}
+.container{
+    margin-bottom: 20px;
+}
+.btngrp{
+    display: flex;
+    flex-direction: row;
+    
+}
+.searcher{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}

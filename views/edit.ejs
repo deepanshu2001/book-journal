@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/b3ae19db94.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+    <style>
+      body {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background: hsl(137, 46%, 24%);
+  font-family: "Poppins", sans-serif;
+}
+    </style>
+</head>
+<body style="background-color: #00000052;">
+    <div class="container my-5 w-50">
+    <h1>Enter Details</h1>
+    <form action="/edit" method="post">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Enter ISBN_id</label>
+            <input type="text" name="isbn_id" value="<%= data[0].isbn_id %>" class="form-control" id="exampleFormControlInput1">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Enter Author</label>
+            <input type="text" value="<%= data[0].author%>" name="author" class="form-control" id="exampleFormControlInput1" >
+          </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Enter title</label>
+            <input type="text" value="<%= data[0].title %>" name="title" class="form-control" id="exampleFormControlInput1" >
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Enter review</label>
+            <textarea class="form-control"  name="review" id="exampleFormControlTextarea1" rows="7"><%=  data[0].review %></textarea>
+          </div>
+         <div class="card">
+          <h2>Enter a Rating</h2>
+          <div class="star-group">
+            <span onclick="addrating(1)" class="star">
+              ★
+            </span>
+            <span onclick="addrating(2)" class="star">
+              ★
+            </span>
+            <span onclick="addrating(3)" class="star">
+              ★
+            </span>
+            <span onclick="addrating(4)" class="star">
+              ★
+            </span>
+            <span onclick="addrating(5)" class="star">
+              ★
+            </span>
+          </div>
+          
+          <div>
+            <input id="rate" type="hidden" name="rating" class="form-control" id="exampleFormControlInput1" >
+            <p>Rating is : <span id="output"><%= data[0].rating %></span>/5</p>
+          </div>
+         </div>
+          <button type="submit" class="mt-3 btn btn-dark">Add</button>
+    </form>
+</div>
+<script>
+  const stars=document.getElementsByClassName("star");
+  const output=document.getElementById('output');
+  const rate=document.getElementById("rate")
+  function addrating(n){
+    remove();
+    for(let i=0;i<n;i++){
+      if(n==1){
+        cls="one";
+      }
+      else if(n==2){
+        cls="two";
+      }
+      else if(n==3){
+        cls="three";
+      }
+      else if(n==4){
+        cls="four";
+      }
+      else if(n==5){
+        cls="five";
+      }
+      stars[i].className="star "+cls
+    }
+    output.innerText=n;
+    rate.value=n;
+  }
+  function remove(){
+    for(let i=0;i<5;i++){
+      stars[i].className="star"
+    }
+  }
+</script>
+</body>
+</html>

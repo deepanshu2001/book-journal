@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Journal</title>
+    <script src="https://kit.fontawesome.com/b3ae19db94.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <nav>
+        <h1>Book Journal</h1>
+        <a href="/"><h4>Home</h4></a>
+    </nav>
+    <div class="container">
+         <div class="searcher mt-5">
+            <a href="/add-book"><button type="button" class="btn btn-outline-secondary">Add Book</button></a>
+            <form id="searchform" action="/" method="get">
+              <div class="w-75 mb-3">
+                <input name="find" id="search" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Search for a book">
+              </div>
+            </form>
+           
+         </div>
+        
+         <h3>Sort by</h3>
+         <form id="sortform" action="/" method="get">
+          <select id="sorting" value="" name="sort" class="form-select w-25" aria-label="Default select example">
+            <option selected>choose Options</option>
+            <option value="author">Author</option>
+            <option value="rating">Rating</option>
+            <option value="title">Title</option>
+          </select>   
+         </form>
+        
+        <% if(locals.data){  %>
+           <% data.forEach(element => { %>
+            <div class=" box container px-4 text-center">
+              <div class="row gx-5">
+                <div class="col">
+                 <div class="p-3">
+                  <img src="<%= element.image %>">
+                 </div>
+                </div>
+                <div class="col">
+                  <div class="p-3">
+                      <h1 class="text-start">Title</h1>
+                      <h4 class="text-start"><%= element.title %></h4>
+                      <h1 class="text-start">Author</h1>
+                      <h4 class="text-start"><%=element.author %></h4>
+                      <h1 class="text-start">Review</h1>
+                      <p class="text-start"><%= element.review %></p>
+                      <h1 class="text-start">Rating</h1>
+                      <p class="fw-bolder fs-2 text-start"><%= element.rating %></p>
+                      <div class="btngrp mb-5 text-start">
+                        <form class="me-3 "  action="/edit" method="get">
+                          <input type="hidden" name="isbn_getter" value="<%= element.isbn_id %>" id="">
+                          <button type="submit" class="text-start btn btn-secondary">Edit</button>
+                        </form>
+                        <form  action="/delete" method="get">
+                          <input type="hidden" name="isbn_info" value="<%= element.isbn_id %>" id="">
+                          <button type="submit" class="text-start btn btn-secondary">Delete</button>
+                        </form>
+                      </div>
+                      
+                      
+                      
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+         <%  }) %>
+            
+      <%  } %>
+    </div>
+    <footer>
+        <h1>Book Journal</h1>
+        <h4>Home</h4>
+    </footer>
+    <script>
+      const sorting=document.getElementById("sorting")
+      sorting.addEventListener("change",(e)=>{
+        console.log(e.target)
+        document.getElementById('sortform').submit()
+      })
+      const search=document.getElementById('search');
+      search.addEventListener("keypress",(e)=>{
+        if(e.key=='Enter'){
+          e.preventDefault();
+          document.getElementById("searchform").submit();
+        }
+        
+      })
+    </script>
+</body>
+</html>
