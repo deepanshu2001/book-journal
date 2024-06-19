@@ -1,11 +1,20 @@
 # Book Journal
 
 Book Journal is a web application that allows users to keep track of books they have read, write reviews, and rate the books. Users can register, log in, add books, edit book details, and delete books.
+
+Login Page
 ![image](https://github.com/deepanshu2001/book-journal/assets/44342782/539d59b7-403f-44e2-964f-a0ac182452d8)
+Registration Page
+![image](https://github.com/deepanshu2001/book-journal/assets/44342782/49080f15-8db6-479f-9492-0e37dab11aae)
+User Page
+![image](https://github.com/deepanshu2001/book-journal/assets/44342782/4f13acbf-b22e-4985-9b94-4cb7617268b6)
+
+Add Book Page
+![image](https://github.com/deepanshu2001/book-journal/assets/44342782/99909a4b-ceb7-4c1d-a9da-2aba4901fd29)
 
 ## Features
 
-- User registration and login
+- User registration and login and logout
 - Add, edit, and delete books
 - Write reviews and rate books
 - Search and sort books by title, author, or rating
