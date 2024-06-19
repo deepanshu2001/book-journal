@@ -12,10 +12,15 @@
     <nav>
         <h1>Book Journal</h1>
         <a href="/"><h4>Home</h4></a>
+        <a href="/login">Login</a>
+        <a href="/Register">Register</a>
+        <% if(locals.logout == "true") { %>
+          <div class="alert alert-danger" role="alert">Logged Out succeesfully</div>
+       <% } %>
     </nav>
     <div class="container">
          <div class="searcher mt-5">
-            <a href="/add-book"><button type="button" class="btn btn-outline-secondary">Add Book</button></a>
+            <a href="/add-book"><button type="button" class="btn btn-secondary">Add Book</button></a>
             <form id="searchform" action="/" method="get">
               <div class="w-75 mb-3">
                 <input name="find" id="search" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Search for a book">
@@ -43,24 +48,24 @@
                   <img src="<%= element.image %>">
                  </div>
                 </div>
-                <div class="col">
-                  <div class="p-3">
-                      <h1 class="text-start">Title</h1>
-                      <h4 class="text-start"><%= element.title %></h4>
-                      <h1 class="text-start">Author</h1>
-                      <h4 class="text-start"><%=element.author %></h4>
-                      <h1 class="text-start">Review</h1>
-                      <p class="text-start"><%= element.review %></p>
-                      <h1 class="text-start">Rating</h1>
-                      <p class="fw-bolder fs-2 text-start"><%= element.rating %></p>
+                <div class="col ">
+                  <div class="p-3 ">
+                      <h1 class="text-start ">Title</h1>
+                      <h4 class="text-start "><%= element.title %></h4>
+                      <h1 class="text-start ">Author</h1>
+                      <h4 class="text-start "><%=element.author %></h4>
+                      <h1 class="text-start ">Review</h1>
+                      <p class="text-start "><%= element.review %></p>
+                      <h1 class="text-start ">Rating</h1>
+                      <p class="fw-bolder fs-2 text-start "><%= element.rating %></p>
                       <div class="btngrp mb-5 text-start">
                         <form class="me-3 "  action="/edit" method="get">
                           <input type="hidden" name="isbn_getter" value="<%= element.isbn_id %>" id="">
-                          <button type="submit" class="text-start btn btn-secondary">Edit</button>
+                          <button type="submit" class="text-start text-sm-center btn btn-secondary">Edit</button>
                         </form>
                         <form  action="/delete" method="get">
                           <input type="hidden" name="isbn_info" value="<%= element.isbn_id %>" id="">
-                          <button type="submit" class="text-start btn btn-secondary">Delete</button>
+                          <button type="submit" class="text-start text-sm-center btn btn-secondary">Delete</button>
                         </form>
                       </div>
                       
@@ -74,6 +79,13 @@
          <%  }) %>
             
       <%  } %>
+      <form action="/logout" method="get">
+        <button type="submit" class="mx-auto btn btn-secondary">Log Out</button>
+
+        
+      </form>
+      
+      
     </div>
     <footer>
         <h1>Book Journal</h1>
@@ -81,6 +93,8 @@
     </footer>
     <script>
       const sorting=document.getElementById("sorting")
+      const add_book=document.getElementById("add_book");
+      const addbookform=document.getElementById("addbookform");
       sorting.addEventListener("change",(e)=>{
         console.log(e.target)
         document.getElementById('sortform').submit()
@@ -93,6 +107,7 @@
         }
         
       })
+      
     </script>
 </body>
 </html>
